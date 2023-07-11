@@ -11,5 +11,6 @@ services:
       INNGEST_REGISTER_URL: http://host.docker.internal:8288/fn/register
     volumes:
       - .:/app
+      - /app/node_modules
     ports:
       - 3000:3000

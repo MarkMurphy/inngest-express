@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --trace-warnings -- src/server.ts"
+    "dev": "npx ts-node-dev --transpile-only --trace-warnings -- src/server.ts"
   },
   "keywords": [],
   "author": "",
