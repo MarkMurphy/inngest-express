@@ -36,7 +36,12 @@ app.get('/healthz', (req, res) => {
   res.status(200).send({ status: 'ok' })
 })
 
-app.use('/api/inngest', serve(inngest, [hello]))
+app.use(
+  '/api/inngest',
+  serve(inngest, [hello], {
+    inngestRegisterUrl: process.env.INNGEST_REGISTER_URL,
+  })
+)
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)

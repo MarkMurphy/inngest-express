@@ -7,6 +7,8 @@ services:
     command: npm run dev
     env_file:
       - .env
+    environment:
+      INNGEST_REGISTER_URL: http://host.docker.internal:8288/fn/register
     volumes:
       - .:/app
     ports:
