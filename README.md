@@ -30,7 +30,6 @@ curl http://localhost:3000/api/inngest
 ## Run Inngest CLI in Development Mode
 
 To run the Inngest CLI in development mode, use the following command:
-Run:
 
 ```zsh
 npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
