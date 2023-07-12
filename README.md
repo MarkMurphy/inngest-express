@@ -10,6 +10,14 @@ Upon conducting some initial debugging, it appears that the issue is related to 
 
 I have kept the line in the `src/server.ts` file that passes a different fetch implementation. You are welcome to uncomment it to observe the differences described above.
 
+## Prerequisites
+
+Before proceeding with the setup and usage of this project, ensure that you have the following prerequisites installed on your development system:
+
+- [Docker for Mac](https://docs.docker.com/desktop/release-notes/) version 4.19.0 or higher
+
+Please make sure you must have Docker for Mac installed and updated to the required version before proceeding further.
+
 ## Usage
 
 ### Run the Application
