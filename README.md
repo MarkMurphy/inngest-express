@@ -1,12 +1,14 @@
 ## Background
 
-I discovered an issue where the Inngest SDK would cause my docker container to exit with code 0 and no other output while attempting to register with the Inngest CLI dev server, which I have running separately on my host machine.
+I encountered an issue where the Inngest SDK caused my Docker container to unexpectedly exit with code 0 and without any additional output. This occurred while attempting to register with the Inngest CLI development server, which is running separately on my host machine.
 
-I've been having this issue in Docker Desktop for mac (with Intel chip) in v4.19.0 and above. Strangely, it's not an in issue in v4.18.0.
+This problem specifically arises in Docker Desktop for Mac (with Intel chip) versions 4.19.0 and above. Interestingly, it does not occur in version 4.18.0.
 
-When the server is run directly from the host machine (not within a Docker container), there's no issue.
+When running the server directly from the host machine, outside of a Docker container, there is no problem.
 
-After some quick debugging, it seems related to the default `fetch` implementation used by the SDK. When I provided the `fetch` implementation from the node-fetch package, the issue went away. Strangely, while I was debugging, it didn't always seem consistent. As I stepped through the SDK's code the unexpected exit would not not always occur and the api would recieve a succesful response to the register endpoint.
+Upon conducting some initial debugging, it appears that the issue is related to the default `fetch` implementation used by the SDK. However, when I supplied the `fetch` implementation from the node-fetch package, the problem was resolved. Curiously, during my debugging process, the behavior was not consistently reproducible. While stepping through the SDK's code, the unexpected container exit did not always occur, and the API would sometimes receive a successful response from the register endpoint.
+
+I have kept the line in the `src/server.ts` file that passes a different fetch implementation. You are welcome to uncomment it to observe the differences described above.
 
 ## Usage
 
