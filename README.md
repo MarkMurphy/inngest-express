@@ -16,9 +16,11 @@ Before proceeding with the setup and usage of this project, ensure that you have
 
 - [Docker for Mac](https://docs.docker.com/desktop/release-notes/) version 4.19.0 or higher
 
-Please make sure you must have Docker for Mac installed and updated to the required version before proceeding further.
+Please make sure you have Docker for Mac installed and updated to the required version before proceeding further.
 
 ## Usage
+
+Ensure that you have followed the prerequisites described above before proceeding.
 
 ### Run the Application
 
