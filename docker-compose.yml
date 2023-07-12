@@ -8,9 +8,10 @@ services:
     env_file:
       - .env
     environment:
-      INNGEST_REGISTER_URL: http://host.docker.internal:8288/fn/register
+      INNGEST_DEVSERVER_URL: http://host.docker.internal:8288
     volumes:
       - .:/app
       - /app/node_modules
     ports:
       - 3000:3000
+      - 9000:9000

@@ -1,7 +1,7 @@
-import express from 'express'
-import { Inngest } from 'inngest'
-import { serve } from 'inngest/express'
 import dotenv from 'dotenv'
+import express from 'express'
+import { Inngest, RegisterOptions } from 'inngest'
+import { serve } from 'inngest/express'
 
 dotenv.config()
 
@@ -39,10 +39,21 @@ app.get('/healthz', (req, res) => {
 app.use(
   '/api/inngest',
   serve(inngest, [hello], {
-    inngestRegisterUrl: process.env.INNGEST_REGISTER_URL,
+    // When running in a container, the default fetch implementation seems to
+    // cause the process to exit unexpectedly in Docker for Mac v4.19.0 or above.
+    // Uncomment the following line to use node-fetch instead:
+    // fetch: require('node-fetch') as unknown as RegisterOptions['fetch'],
+    logLevel: 'debug',
   })
 )
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`)
+})
+
+process.on('SIGTERM', () => {
+  console.debug('SIGTERM signal received: closing HTTP server')
+  server.close(() => {
+    console.debug('HTTP server closed')
+  })
 })

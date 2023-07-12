@@ -1,3 +1,13 @@
+## Background
+
+I discovered an issue where the Inngest SDK would cause my docker container to exit with code 0 and no other output while attempting to register with the Inngest CLI dev server, which I have running separately on my host machine.
+
+I've been having this issue in Docker Desktop for mac (with Intel chip) in v4.19.0 and above. Strangely, it's not an in issue in v4.18.0.
+
+When the server is run directly from the host machine (not within a Docker container), there's no issue.
+
+After some quick debugging, it seems related to the default `fetch` implementation used by the SDK. When I provided the `fetch` implementation from the node-fetch package, the issue went away. Strangely, while I was debugging, it didn't always seem consistent. As I stepped through the SDK's code the unexpected exit would not not always occur and the api would recieve a succesful response to the register endpoint.
+
 ## Usage
 
 ### Run the Application
